@@ -1,0 +1,41 @@
+1. 
+imfinfo('C:\Users\dell\Desktop\ex\7.bmp')
+
+2.
+a=imread('C:\Users\dell\Desktop\ex\lena.bmp');
+[m,n]=size(a);
+f=zeros(m,n);
+for i=1:m
+for j=1:n
+f(i,j)=floor(a(i,j)/128);
+end
+end
+imshow(f,[0,1])
+title('灰度级1')
+
+3.
+i=imread('C:\Users\dell\Desktop\ex\lena.bmp');
+mean=mean2(i)
+std=sqrt((std2(i))^2)
+
+4.
+f=imread('C:\Users\dell\Desktop\ex\lena.bmp');
+a=imresize(f,4,'bicubic');
+imshow(a);
+
+5.
+水平shear：
+f=imread('C:\Users\dell\Desktop\ex\elain1.bmp');
+transformtype='affine';
+transformmatrix=[1 1.5 0;0 1 0;0 0 1];
+T=maketform(transformtype,transformmatrix);
+nf=imtransform(f,T);
+a=imresize(nf,[2048,2048],'nearest');
+imshow(a)
+title('elain offset nearest')
+旋转：
+f=imread('C:\Users\dell\Desktop\ex\lena.bmp');
+j=imrotate(f,30);
+j1=imresize(j,[2048,2048],'bicubic');
+imshow(j1)
+title('lena bicubic')
